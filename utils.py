@@ -47,6 +47,7 @@ from keras.metrics import categorical_crossentropy, categorical_accuracy
 from keras.layers.convolutional import *
 from keras.preprocessing import image, sequence
 from keras.preprocessing.text import Tokenizer
+from os.path import *
 
 from vgg16 import *
 from vgg16bn import *
@@ -221,9 +222,9 @@ def vgg_ft_bn(out_dim):
 
 
 def get_classes(path):
-    batches = get_batches(path+'train', shuffle=False, batch_size=1)
-    val_batches = get_batches(path+'valid', shuffle=False, batch_size=1)
-    test_batches = get_batches(path+'test', shuffle=False, batch_size=1)
+    batches = get_batches(join (path, 'train'), shuffle=False, batch_size=1)
+    val_batches = get_batches(join (path, 'valid'), shuffle=False, batch_size=1)
+    test_batches = get_batches(join (path, 'test'), shuffle=False, batch_size=1)
     return (val_batches.classes, batches.classes, onehot(val_batches.classes), onehot(batches.classes),
         val_batches.filenames, batches.filenames, test_batches.filenames)
 
