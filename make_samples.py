@@ -13,7 +13,13 @@ samp_dir = join (base_dir, "sample")
 samp_train_dir = join (samp_dir, "train")
 samp_valid_dir = join (samp_dir, "valid")
 copy_num       = int (sys.argv[2])
-        
+
+# make the results dir
+result_dir = join (base_dir, "results")
+distutils.dir_util.mkpath (result_dir)
+result_samp_dir = join (samp_dir, "results")
+distutils.dir_util.mkpath (result_samp_dir)
+
 def copy_files (sdir, ddir, msg):
     #rmtree (ddir)
     distutils.dir_util.mkpath (ddir)
